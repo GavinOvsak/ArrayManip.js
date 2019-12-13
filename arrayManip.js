@@ -177,7 +177,7 @@ a.item = function(item) {
 // Internal utility based on lodash.js _.get
 
 a.get = function(obj, prop) {
-  return prop.split('.').reduce(function(start, nextPath) {
+  return (prop + '').split('.').reduce(function(start, nextPath) {
     return start[nextPath];
   }, obj);
 };
