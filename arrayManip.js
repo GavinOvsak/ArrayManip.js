@@ -24,8 +24,6 @@ var addTransforms = function(f, paramOnly) {
     };
   });
 
-  // Op wants the original thing...
-
   if (paramOnly) return f;
 
   noParamTransforms.map(function(t) {
