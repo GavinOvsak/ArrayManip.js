@@ -110,7 +110,9 @@ a.not = addTransforms(function(item) {
 a.toArr = function(fList) {
   return addTransforms(function(item, i) {
     return fList.map(function(func) {
-      return (func || a.item)(item, i);
+      if (typeof func === 'function') return func(item, i);
+      else if (func == null) return item;
+      else return func;
     });
   });
 };
@@ -118,7 +120,11 @@ a.toArr = function(fList) {
 a.toObj = function(map) {
   return addTransforms(function(item, i) {
     var res = {};
-    for (var key in map) res[key] = (map[key] || a.item)(item, i);
+    for (var key in map) {
+      if (typeof map[key] === 'function') res[key] = map[key](item, i);
+      else if (map[key] == null) res[key] = item;
+      else res[key] = map[key];
+    }
     return res;
   });
 };
