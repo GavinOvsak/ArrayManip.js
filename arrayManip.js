@@ -84,7 +84,7 @@ a.op = function(operator, num) {
     } else if (operator == '*') {
       return item * other;
     } else if (operator == '^') {
-      return item ** other;
+      return Math.pow(item, other);
     } else if (operator == '/') {
       return item / other;
     } else if (operator == 'abs') {
